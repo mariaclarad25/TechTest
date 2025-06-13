@@ -22,6 +22,7 @@
 		48B0D4142BD295A000A71AE0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B0D4132BD295A000A71AE0 /* Constants.swift */; };
 		48B0D4162BD295E100A71AE0 /* ProductsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B0D4152BD295E100A71AE0 /* ProductsListTableViewCell.swift */; };
 		B7100E292DFC568800882855 /* ProductsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7100E282DFC568700882855 /* ProductsListViewModel.swift */; };
+		B7100E2C2DFC662F00882855 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7100E2B2DFC662F00882855 /* NetworkingManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		48B0D4132BD295A000A71AE0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		48B0D4152BD295E100A71AE0 /* ProductsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsListTableViewCell.swift; sourceTree = "<group>"; };
 		B7100E282DFC568700882855 /* ProductsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsListViewModel.swift; sourceTree = "<group>"; };
+		B7100E2B2DFC662F00882855 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 		48B0D3EB2BD2941D00A71AE0 /* TechTaste */ = {
 			isa = PBXGroup;
 			children = (
+				B7100E2A2DFC660E00882855 /* Networking */,
 				B7100E272DFC565600882855 /* ViewModels */,
 				48B0D4122BD2959200A71AE0 /* Utils */,
 				48B0D40F2BD2956100A71AE0 /* Repository */,
@@ -158,6 +161,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		B7100E2A2DFC660E00882855 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				B7100E2B2DFC662F00882855 /* NetworkingManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -239,6 +250,7 @@
 				48B0D3EF2BD2941D00A71AE0 /* SceneDelegate.swift in Sources */,
 				48B0D40C2BD2952500A71AE0 /* Category.swift in Sources */,
 				48B0D4112BD2957000A71AE0 /* ProductsRepository.swift in Sources */,
+				B7100E2C2DFC662F00882855 /* NetworkingManager.swift in Sources */,
 				48B0D4142BD295A000A71AE0 /* Constants.swift in Sources */,
 				48B0D4162BD295E100A71AE0 /* ProductsListTableViewCell.swift in Sources */,
 			);
