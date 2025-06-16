@@ -8,20 +8,24 @@
 import Foundation
 
 class ProductsListViewModel {
-    var products: [Product]  = []
+    var products: Observable<[Product]> = Observable([])
+    var isLoading: Observable<Bool> = Observable(false)
+    
     private var networkingManager: NetworkingManager
     
-    init(netwoekingManager: NetworkingManager = NetworkingManager()) {
-        self.networkingManager  = netwoekingManager
+    init(networkingManager: NetworkingManager = NetworkingManager()) {
+        self.networkingManager  = networkingManager
     }
     
     func getAllProducts() {
+        isLoading.value = true
         networkingManager.getProductsList { [weak self] result in
             guard let self else {return}
+            self.isLoading.value = false
             switch result {
             case .success(let products):
                 DispatchQueue.main.async {
-                    self.products = products
+                    self.products.value = products
                 }
             case .failure(let failure):
                 print ("Ocorreu um erro ao obter os produtos: \(failure.localizedDescription)")
@@ -30,6 +34,6 @@ class ProductsListViewModel {
     }
     
     func getNumberOfRowsOfTableView() -> Int {
-        return products.count
+        return products.value?.count ?? 0
     }
 }
