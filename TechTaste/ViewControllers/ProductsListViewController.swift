@@ -38,7 +38,7 @@ class ProductsListViewController: UIViewController {
         activityIndicatorView.color = .white
         return activityIndicatorView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //setupNavigationBar()
@@ -56,9 +56,9 @@ class ProductsListViewController: UIViewController {
     }
     
     /*private func setupNavigationBar() {
-        navigationController?.setNavigationBarHidden(false, animated: true)
-        navigationItem.hidesBackButton = false
-    }*/
+     navigationController?.setNavigationBarHidden(false, animated: true)
+     navigationItem.hidesBackButton = false
+     }*/
     
     private func setupUI() {
         view.frame = view.frame.inset(by: UIEdgeInsets(top: 10, left: 24, bottom: 10, right: 24))
@@ -130,9 +130,19 @@ extension ProductsListViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let selectedProduct = cellDataSource[indexPath.row]
-        let detailVC = ProductDetailViewController()
-        detailVC.productId = selectedProduct.productId
+        guard let product = viewModel.getProductById(id: cellDataSource[indexPath.row].productId) else {
+            return
+        }
+        
+        let productsDetailViewModel = ProductsDetailViewModel(
+            productId: product.id,
+            productName: product.name,
+            productDescripition: product.description,
+            productFormattedPrice: product.formattedPrice,
+            productImage: product.image
+        )
+        
+        let detailVC = ProductDetailViewController(viewModel: productsDetailViewModel)
         
         let backItem = UIBarButtonItem()
         backItem.title = "Voltar"

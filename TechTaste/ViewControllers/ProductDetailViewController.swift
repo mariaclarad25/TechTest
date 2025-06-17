@@ -9,10 +9,21 @@ import UIKit
 
 class ProductDetailViewController: UIViewController {
     
-    var productId: Int?
+    //var productId: Int?
+    
+    var viewModel: ProductsDetailViewModel
+    
+    init(viewModel: ProductsDetailViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private lazy var productDetailImage: UIImageView = {
-        let image = UIImageView()
+        let image = UIImageView(image: UIImage(named: viewModel.productImage))
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFill
         image.layer.masksToBounds = true
@@ -22,6 +33,7 @@ class ProductDetailViewController: UIViewController {
     private lazy var titleProductLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = viewModel.productName
         label.textColor = .mediumOrange
         label.font = .systemFont(ofSize: 16, weight: .semibold)
         label.textAlignment = .justified
@@ -31,6 +43,7 @@ class ProductDetailViewController: UIViewController {
     private lazy var detailProductLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = viewModel.productDescripition
         label.textColor = .gray3
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.numberOfLines = 0
@@ -40,8 +53,9 @@ class ProductDetailViewController: UIViewController {
     private lazy var  priceProductLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = viewModel.productFormattedPrice
         label.textColor = .gray3
-        label.font = .systemFont(ofSize: 14, weight: .regular)
+        label.font = .systemFont(ofSize: 14, weight: .semibold)
         return label
     }()
     
@@ -51,7 +65,7 @@ class ProductDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         addSubviews()
         setupConstrains()
-        loadProductData()
+        //loadProductData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,7 +100,7 @@ class ProductDetailViewController: UIViewController {
         ])
     }
     
-    private func loadProductData() {
+    /*private func loadProductData() {
         guard let id = productId,
               let products = ProductsRepository.loadProducts(),
               let product = products.first(where: { $0.id == id }) else {
@@ -98,5 +112,5 @@ class ProductDetailViewController: UIViewController {
         detailProductLabel.text = product.description
         priceProductLabel.text = product.formattedPrice
         productDetailImage.image = UIImage(named: product.image)
-    }
+    }*/
 }

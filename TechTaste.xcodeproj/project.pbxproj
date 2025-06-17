@@ -26,6 +26,7 @@
 		B70A3CAA2E0058FE0048D1DE /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70A3CA92E0058FE0048D1DE /* ProductDetailViewController.swift */; };
 		B7100E292DFC568800882855 /* ProductsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7100E282DFC568700882855 /* ProductsListViewModel.swift */; };
 		B7100E2C2DFC662F00882855 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7100E2B2DFC662F00882855 /* NetworkingManager.swift */; };
+		B7CE18002E01A0B0007DF34D /* ProductsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CE17FF2E01A0B0007DF34D /* ProductsDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		B70A3CA92E0058FE0048D1DE /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		B7100E282DFC568700882855 /* ProductsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsListViewModel.swift; sourceTree = "<group>"; };
 		B7100E2B2DFC662F00882855 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
+		B7CE17FF2E01A0B0007DF34D /* ProductsDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 			children = (
 				B7100E282DFC568700882855 /* ProductsListViewModel.swift */,
 				B70A3CA52E004CCF0048D1DE /* ProductTableCellViewModel.swift */,
+				B7CE17FF2E01A0B0007DF34D /* ProductsDetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				48B0D3EF2BD2941D00A71AE0 /* SceneDelegate.swift in Sources */,
 				48B0D40C2BD2952500A71AE0 /* Category.swift in Sources */,
 				B70A3CA62E004CCF0048D1DE /* ProductTableCellViewModel.swift in Sources */,
+				B7CE18002E01A0B0007DF34D /* ProductsDetailViewModel.swift in Sources */,
 				48B0D4112BD2957000A71AE0 /* ProductsRepository.swift in Sources */,
 				B7100E2C2DFC662F00882855 /* NetworkingManager.swift in Sources */,
 				48B0D4142BD295A000A71AE0 /* Constants.swift in Sources */,
