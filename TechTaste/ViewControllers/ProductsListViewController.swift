@@ -9,9 +9,10 @@ import UIKit
 
 class ProductsListViewController: UIViewController {
     
-    private var products: [Product] = []
+    //private var products: [Product] = []
     //private var productsRepository: ProductsRepository
     private var viewModel: ProductsListViewModel
+    private var cellDataSource: [ProductTableCellViewModel] = []
     
     init(viewModel: ProductsListViewModel = ProductsListViewModel()) {
         self.viewModel = viewModel
@@ -40,7 +41,7 @@ class ProductsListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationBar()
+        //setupNavigationBar()
         setupUI()
         addSubviews()
         setupConstraints()
@@ -48,10 +49,16 @@ class ProductsListViewController: UIViewController {
         getProducts()
     }
     
-    private func setupNavigationBar() {
-        navigationController?.setNavigationBarHidden(true, animated: true)
-        navigationItem.hidesBackButton = true
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
+    
+    /*private func setupNavigationBar() {
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationItem.hidesBackButton = false
+    }*/
     
     private func setupUI() {
         view.frame = view.frame.inset(by: UIEdgeInsets(top: 10, left: 24, bottom: 10, right: 24))
@@ -84,17 +91,18 @@ class ProductsListViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        bindProducts()
+        bindCellDataSource()
         bindloading()
     }
     
-    private func bindProducts() {
-        viewModel.products.bind { [weak self] products in
-            guard let self, let products else {return}
-            self.products = products
+    private func bindCellDataSource() {
+        viewModel.cellDataSource.bind { [weak self] cellDataSource in
+            guard let self, let cellDataSource else {return}
+            self.cellDataSource = cellDataSource
             self.tableView.reloadData()
         }
     }
+    
     private func bindloading() {
         viewModel.isLoading.bind { [weak self] isLoading in
             guard let self, let isLoading else {return}
@@ -114,12 +122,22 @@ extension ProductsListViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as? ProductsListTableViewCell else { return UITableViewCell() }
-        let product = products[indexPath.row]
+        let product = cellDataSource[indexPath.row]
         cell.configure(with: product)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let selectedProduct = cellDataSource[indexPath.row]
+        let detailVC = ProductDetailViewController()
+        detailVC.productId = selectedProduct.productId
+        
+        let backItem = UIBarButtonItem()
+        backItem.title = "Voltar"
+        navigationItem.backBarButtonItem = backItem
+        
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }

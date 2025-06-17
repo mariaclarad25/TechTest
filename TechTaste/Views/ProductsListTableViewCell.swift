@@ -8,7 +8,7 @@
 import UIKit
 
 class ProductsListTableViewCell: UITableViewCell {
-
+    
     private let productImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -83,7 +83,7 @@ class ProductsListTableViewCell: UITableViewCell {
         contentView.addSubview(productPriceLabel)
         
         NSLayoutConstraint.activate([
-
+            
             backgroundContainerView.topAnchor.constraint(equalTo: contentView.topAnchor),
             backgroundContainerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             backgroundContainerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -104,15 +104,14 @@ class ProductsListTableViewCell: UITableViewCell {
             productPriceLabel.leadingAnchor.constraint(equalTo: backgroundContainerView.leadingAnchor, constant: 16.0),
             productPriceLabel.trailingAnchor.constraint(equalTo: backgroundContainerView.trailingAnchor, constant: -16.0),
             productPriceLabel.bottomAnchor.constraint(lessThanOrEqualTo: backgroundContainerView.bottomAnchor, constant: -16.0),
-
+            
         ])
     }
     
-    func configure(with product: Product) {
-        productImageView.image = UIImage(named: product.image)
-        productNameLabel.text = product.name
-        productDescriptionLabel.text = product.description
-        productPriceLabel.text = product.formattedPrice
+    func configure(with viewModel: ProductTableCellViewModel) {
+        productImageView.image = UIImage(named: viewModel.productImage)
+        productNameLabel.text = viewModel.productName
+        productDescriptionLabel.text = viewModel.productDescription
+        productPriceLabel.text = viewModel.productFormattedPrice
     }
-
 }

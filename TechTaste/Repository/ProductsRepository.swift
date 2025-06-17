@@ -8,7 +8,7 @@
 import Foundation
 
 class ProductsRepository {
-    func loadProducts() -> [Product]? {
+    static func loadProducts() -> [Product]? {
         guard let path = Bundle.main.path(forResource: "products", ofType: "json") else {
             return nil
         }
